@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="css/main.css" type="text/css" rel="stylesheet">
+	<title>CSS3 transform旋转特效</title>
+</head>
+
+<body>
+	<h1>CSS3照片墙</h1>
+	<div class="container">
+		<img class="pic pic1" src="images/mm1.jpg">
+		<img class="pic pic2" src="images/mm2.jpg">
+		<img class="pic pic3" src="images/mm3.jpg">
+		<img class="pic pic4" src="images/mm4.jpg">
+		<img class="pic pic5" src="images/mm5.jpg">
+		<img class="pic pic6" src="images/mm6.jpg">
+		<img class="pic pic7" src="images/mm7.jpg">
+		<img class="pic pic8" src="images/mm8.jpg">
+		<img class="pic pic9" src="images/mm9.jpg">
+		<img class="pic pic10" src="images/mm10.jpg">
+	</div>
+<script>
+window.onload = function  () {
+	var pics = document.getElementsByClassName("pic");
+	var len = pics.length;
+	var container = document.getElementsByClassName("container")[0];
+	var cWidth = container.offsetWidth;
+	console.log(cWidth);
+	var cHeight = container.offsetHeight;
+	var temp;//角度偏差
+	var tempX =  Math.ceil(cWidth / pics[0].offsetWidth);
+	for(var i=0;i<len;i++){
+		temp = Math.ceil(Math.random()*20*Math.pow(-1,Math.ceil(Math.random()*10)));
+		var jx = (i) % (tempX);
+		var jy = Math.floor((i)/tempX);
+		
+		pics[i].style.left = temp+jx*(pics[0].offsetWidth-30)+"px";
+		
+		pics[i].style.top = temp+jy*(pics[0].offsetHeight)+"px";
+
+		pics[i].style.WebkitTransform = 'rotate('+temp+'deg)';
+		pics[i].style.transform = 'rotate('+temp+'deg)';
+	}
+}
+// function()
+
+</script>
+</body>
+</html>
